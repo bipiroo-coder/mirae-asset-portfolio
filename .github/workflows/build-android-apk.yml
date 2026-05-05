@@ -36,3 +36,5 @@ jobs:
         with:
           name: mirae-asset-portfolio-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+# Triggered after redesigned MainActivity update
