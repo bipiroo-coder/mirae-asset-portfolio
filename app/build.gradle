@@ -10,8 +10,8 @@ android {
         applicationId 'com.navi.portfolio'
         minSdk 23
         targetSdk 35
-        versionCode 10
-        versionName '2.0-quant'
+        versionCode 11
+        versionName '2.0-quant-test'
     }
 
     compileOptions {
@@ -19,3 +19,5 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 }
+
+android.sourceSets.main.java.exclude '**/HomeActivity.java'
