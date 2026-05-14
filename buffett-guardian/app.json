@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "name": "Buffett Guardian",
+    "slug": "buffett-guardian",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light"
+  }
+}
