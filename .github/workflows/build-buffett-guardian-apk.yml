@@ -1,0 +1,44 @@
+name: Build Buffett Guardian APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'buffett-guardian/**'
+      - '.github/workflows/build-buffett-guardian-apk.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Install dependencies
+        working-directory: buffett-guardian
+        run: npm install
+
+      - name: Generate Android project
+        working-directory: buffett-guardian
+        run: npx expo prebuild --platform android --non-interactive
+
+      - name: Build debug APK
+        working-directory: buffett-guardian/android
+        run: ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: buffett-guardian-debug-apk
+          path: buffett-guardian/android/app/build/outputs/apk/debug/app-debug.apk
